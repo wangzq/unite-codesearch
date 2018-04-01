@@ -34,7 +34,7 @@ function! s:unite_source.gather_candidates(args, context)
     let l:out = unite#util#system(printf(
           \          l:codesearch_command,
           \          s:unite_source.max_candidates,
-          \          getcwd(),
+          \          substitute(getcwd(), '\\', '\\\\', 'g'),
           \          a:context.input))
   else
     let l:codesearch_command .= ' -n -m %d "%s"'
